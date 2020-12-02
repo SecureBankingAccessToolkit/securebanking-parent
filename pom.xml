@@ -45,6 +45,27 @@
     </organization>
     <url>http://www.forgerock.org</url>
 
+    <developers>
+        <developer>
+            <name>Jamie Bowen</name>
+            <email>jamie.bowen@forgerock.com</email>
+            <organization>ForgeRock</organization>
+            <organizationUrl>http://www.forgerock.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Jorge Sanchez-Perez</name>
+            <email>jorge.sanchez-perez@forgerock.com</email>
+            <organization>ForgeRock</organization>
+            <organizationUrl>http://www.forgerock.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Matt Wills</name>
+            <email>matt.wills@forgerock.com</email>
+            <organization>ForgeRock</organization>
+            <organizationUrl>http://www.forgerock.com</organizationUrl>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -57,16 +78,43 @@
         <lombok.version>1.18.16</lombok.version>
         <guava.version>30.0-jre</guava.version>
         <nimbus-jose.version>9.1.3</nimbus-jose.version>
+        <assertj.version>3.18.1</assertj.version>
+        <junit-jupiter.version>5.7.0</junit-jupiter.version>
+        <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
+        <!-- TODO: Matt review these versions.
+        I remember him trying to update some versions and deciding new versions didn't work with the OB swagger
+        generated files??
+        -->
+        <jersey.version>2.30</jersey.version>
+        <jackson-databind.version>2.9.9</jackson-databind.version>
+        <springfox-version>2.9.2</springfox-version>
+        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <javax-el.version>3.0.1-b12</javax-el.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- Spring Boot Dependencies -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+                <!-- ensure junit 4 tests aren't created by mistake -->
+                <exclusions>
+                    <exclusion>
+                        <groupId>junit</groupId>
+                        <artifactId>junit</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- Spring Cloud Dependencies -->
@@ -106,20 +154,73 @@
                 <version>2.10.8</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>${jersey.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-version}</version>
+            </dependency>
+
             <!-- 3rd Party Test dependencies -->
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.github.jsonzou</groupId>
                 <artifactId>jmockdata</artifactId>
                 <scope>test</scope>
                 <version>${jmockdata.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${javax-el.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -136,6 +237,11 @@
                         <verbose>true</verbose>
                         <fork>true</fork>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
