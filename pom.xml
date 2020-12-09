@@ -287,7 +287,7 @@
                             <email>obst@forgerock.com</email>
                         </properties>
                         <mapping>
-                            <java>JAVAPKG_STYLE</java>
+                            <java>JAVADOC_STYLE</java>
                         </mapping>
                     </configuration>
                     <executions>
