@@ -1,8 +1,6 @@
 name: pull-request
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -18,13 +16,10 @@ jobs:
           architecture: x64
 
       - name: Cache Maven packages
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven2-${{ hashFiles('**/pom.xml') }}
-
-      - name: Check Copyright
-        run: mvn license:check
 
       - name: Build and Test
         run: mvn clean package
