@@ -25,10 +25,11 @@ jobs:
         run: |
           VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
           echo "::set-env name=VERSION::$VERSION"
+          echo "Version is $VERSION"
         id: get_version
 
       - name: Set up snapshot forgerock maven repository
-          if: contains($VERSION, 'SNAPSHOT')
+          if: contains("$VERSION", 'SNAPSHOT')
           uses: actions/setup-java@v1
           with: # running setup-java and overwrites the settings.xml
             java-version: "14"
