@@ -22,10 +22,10 @@ jobs:
           key: ${{ runner.os }}-maven2-${{ hashFiles('**/pom.xml') }}
 
       - name: Get version
-          run: |
-            VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
-            echo "::set-output name=version::$VERSION"
-          id: get_version
+        run: |
+          VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
+          echo "::set-env name=VERSION::$VERSION"
+        id: get_version
 
       - name: Set up snapshot forgerock maven repository
           if: contains($VERSION, 'SNAPSHOT')
