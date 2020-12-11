@@ -23,23 +23,30 @@ jobs:
 
       - name: Get version
         run: |
-          VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
-          echo "::set-env name=VERSION::$VERSION"
+          echo "VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )" >> $GITHUB_ENV
           echo "Version is $VERSION"
         id: get_version
 
       - name: Set up snapshot forgerock maven repository
-          if: contains("$VERSION", 'SNAPSHOT')
-          uses: actions/setup-java@v1
-          with: # running setup-java and overwrites the settings.xml
-            java-version: "14"
-            architecture: x64
-            server-id: maven.forgerock.org-community-snapshots # Value of the distributionManagement/repository/id field of the pom.xml
-            server-username: MAVEN_REPO_USERNAME # env variable for username in deploy
-            server-password: MAVEN_REPO_TOKEN # env variable for token in deploy
+        if: contains( env.VERSION, 'SNAPSHOT')
+        uses: actions/setup-java@v1
+        with: # running setup-java and overwrites the settings.xml
+          java-version: "14"
+          architecture: x64
+          server-id: maven.forgerock.org-community-snapshots # Value of the distributionManagement/repository/id field of the pom.xml
+          server-username: MAVEN_REPO_USERNAME # env variable for username in deploy
+          server-password: MAVEN_REPO_TOKEN # env variable for token in deploy
 
-      - name: Release package
+      - name: Release snapshot package
+        if: contains(env.VERSION, 'SNAPSHOT')
         run: mvn -B deploy
+        env:
+          MAVEN_REPO_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
+          MAVEN_REPO_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
+
+      - name: Check Integrity
+        if: "!contains(env.VERSION, 'SNAPSHOT')"
+        run: mvn -B verify
         env:
           MAVEN_REPO_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
           MAVEN_REPO_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
