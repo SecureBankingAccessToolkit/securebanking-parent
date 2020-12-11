@@ -39,14 +39,14 @@ jobs:
 
       - name: Release snapshot package
         if: contains(env.VERSION, 'SNAPSHOT')
-        run: mvn -B deploy
+        run: mvn -U -B deploy
         env:
           MAVEN_REPO_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
           MAVEN_REPO_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
 
       - name: Check Integrity
         if: "!contains(env.VERSION, 'SNAPSHOT')"
-        run: mvn -B verify
+        run: mvn -U -B verify
         env:
           MAVEN_REPO_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
           MAVEN_REPO_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
