@@ -22,7 +22,7 @@ jobs:
           key: ${{ runner.os }}-maven2-${{ hashFiles('**/pom.xml') }}
 
       - name: Build and Test
-        run: mvn clean package
+        run: mvn -U clean package
 
       - uses: codecov/codecov-action@v1
         with:
