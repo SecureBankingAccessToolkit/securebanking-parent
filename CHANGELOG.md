@@ -62,6 +62,13 @@ Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAccelerat
     - Strip out JUnit 4
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/27
+### GitHub [#16](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/16) 27: Exclude JUnit 4
+[115dafaac9622c7](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/115dafaac9622c7) Matt Wills *2020-12-16 10:41:10*
+27: Exclude JUnit 4 (#16)
+
+- Ensured JUnit 4 isn't being pulled in by spring-boot-starter-test
+
+Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/27
 ### GitHub [#2](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/2) 4: Use secure banking BOM and spring BOM
 [989bdb467d4f87b](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/989bdb467d4f87b) Jamie Bowen *2020-11-27 17:22:21*
 4: Use secure banking BOM and spring BOM (#2)
