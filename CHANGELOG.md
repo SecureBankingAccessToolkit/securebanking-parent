@@ -54,6 +54,14 @@ overriding the import from the spring-boot-dependencies bom and hiding
 the version!
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/4
+### GitHub [#14](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/14) 27: Add dependencies for aspsp-simulator
+[df3d32d82f5e2dd](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/df3d32d82f5e2dd) Matt Wills *2020-12-16 09:27:20*
+27: Add dependencies for aspsp-simulator (#14)
+
+- Add required depdendencies
+    - Strip out JUnit 4
+
+Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/27
 ### GitHub [#2](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/2) 4: Use secure banking BOM and spring BOM
 [989bdb467d4f87b](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/989bdb467d4f87b) Jamie Bowen *2020-11-27 17:22:21*
 4: Use secure banking BOM and spring BOM (#2)
