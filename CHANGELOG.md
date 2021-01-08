@@ -69,6 +69,14 @@ Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAccelerat
 - Ensured JUnit 4 isn't being pulled in by spring-boot-starter-test
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/27
+### GitHub [#17](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/17) 4: Remove some warnings from child builds
+[66e32480369b96a](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/66e32480369b96a) Jamie Bowen *2020-12-16 11:22:50*
+4: Remove some warnings from child builds (#17)
+
+Specify version of git-commit-id-plugin
+Specify locale for build-helper-plugin
+
+Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/4
 ### GitHub [#2](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/2) 4: Use secure banking BOM and spring BOM
 [989bdb467d4f87b](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/989bdb467d4f87b) Jamie Bowen *2020-11-27 17:22:21*
 4: Use secure banking BOM and spring BOM (#2)
