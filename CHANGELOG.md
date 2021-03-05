@@ -83,6 +83,11 @@ Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAccelerat
 
 Also adds a read me and some more 3rd party dependencies
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/4
+### GitHub [#20](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/20) 33: Add spring-cloud-starter-sleuth
+[261042d9ec12e16](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/261042d9ec12e16) Matt Wills *2021-01-08 15:47:02*
+33: Add spring-cloud-starter-sleuth (#20)
+
+Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/33
 ### GitHub [#3](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/3) 4: Refactor how Java 14 is specified
 [dfd4913232b2ad4](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/dfd4913232b2ad4) Jamie Bowen *2020-11-30 16:24:20*
 4: Refactor how Java 14 is specified (#3)
