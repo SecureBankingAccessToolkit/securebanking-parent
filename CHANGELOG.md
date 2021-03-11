@@ -88,6 +88,11 @@ Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAccelerat
 33: Add spring-cloud-starter-sleuth (#20)
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/33
+### GitHub [#21](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/21) 58: Add Wiremock
+[94fac736c1d7c0b](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/94fac736c1d7c0b) Matt Wills *2021-03-05 08:43:45*
+58: Add Wiremock (#21)
+
+Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/58
 ### GitHub [#3](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/3) 4: Refactor how Java 14 is specified
 [dfd4913232b2ad4](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/dfd4913232b2ad4) Jamie Bowen *2020-11-30 16:24:20*
 4: Refactor how Java 14 is specified (#3)

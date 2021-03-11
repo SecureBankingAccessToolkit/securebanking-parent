@@ -141,6 +141,12 @@
                 <version>${spring-cloud.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+
             <!-- Other 3rd Party -->
             <dependency>
                 <groupId>net.logstash.logback</groupId>
