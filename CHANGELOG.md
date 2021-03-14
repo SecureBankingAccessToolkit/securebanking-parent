@@ -93,6 +93,11 @@ Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAccelerat
 58: Add Wiremock (#21)
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/58
+### GitHub [#22](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/22) 61: spring-cloud-config-serve dependency
+[a81df6089cd87de](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/a81df6089cd87de) Matt Wills *2021-03-11 12:50:59*
+61: spring-cloud-config-serve dependency (#22)
+
+Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/61
 ### GitHub [#3](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/3) 4: Refactor how Java 14 is specified
 [dfd4913232b2ad4](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/dfd4913232b2ad4) Jamie Bowen *2020-11-30 16:24:20*
 4: Refactor how Java 14 is specified (#3)
