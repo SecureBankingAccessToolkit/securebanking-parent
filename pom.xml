@@ -418,6 +418,9 @@
                                     <exclude>**/README</exclude>
                                     <exclude>src/test/resources/**</exclude>
                                     <exclude>src/main/resources/**</exclude>
+                                    <exclude>_infra/**</exclude>
+                                    <exclude>Dockerfile</exclude>
+                                    <exclude>Makefile</exclude>
                                 </excludes>
                             </licenseSet>
                         </licenseSets>
