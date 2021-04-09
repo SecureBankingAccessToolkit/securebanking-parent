@@ -98,6 +98,11 @@ Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAccelerat
 61: spring-cloud-config-serve dependency (#22)
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/61
+### GitHub [#23](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/23) 61: spring-cloud-config-client dependency
+[ec99e344f0337e3](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/ec99e344f0337e3) Matt Wills *2021-03-15 12:19:53*
+61: spring-cloud-config-client dependency (#23)
+
+Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/61
 ### GitHub [#3](https://github.com/SecureBankingAcceleratorToolkit/securebanking-parent/pull/3) 4: Refactor how Java 14 is specified
 [dfd4913232b2ad4](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/dfd4913232b2ad4) Jamie Bowen *2020-11-30 16:24:20*
 4: Refactor how Java 14 is specified (#3)
