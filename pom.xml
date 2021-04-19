@@ -419,6 +419,7 @@
                                     <exclude>src/test/resources/**</exclude>
                                     <exclude>src/main/resources/**</exclude>
                                     <exclude>_infra/**</exclude>
+                                    <exclude>docker/**</exclude>
                                     <exclude>Dockerfile</exclude>
                                     <exclude>Makefile</exclude>
                                 </excludes>
