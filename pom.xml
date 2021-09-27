@@ -438,7 +438,7 @@
                             </licenseSet>
                         </licenseSets>
                         <properties>
-                            <year>${current.year}</year>
+                            <year>2021</year>
                             <owner>ForgeRock AS</owner>
                             <email>obst@forgerock.com</email>
                         </properties>
