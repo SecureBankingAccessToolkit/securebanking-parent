@@ -115,6 +115,11 @@ add _infra to the license exclude pom (#24)
 66 - Switched from jib to dockerfile maven plugin (#25)
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/66
+### GitHub [#26](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/26) 66 - Add docker related files to licence header exclusion list
+[6bbd60aa3218607](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/6bbd60aa3218607) Matt Wills *2021-04-19 09:14:28*
+66 - Add docker related files to licence header exclusion list (#26)
+
+Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/66
 ### GitHub [#3](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/3) 4: Refactor how Java 14 is specified
 [dfd4913232b2ad4](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/dfd4913232b2ad4) Jamie Bowen *2020-11-30 16:24:20*
 4: Refactor how Java 14 is specified (#3)

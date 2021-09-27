@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Check PR integrity
+    name: Check Master integrity
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
@@ -37,16 +37,16 @@ jobs:
           server-username: MAVEN_REPO_USERNAME # env variable for username in deploy
           server-password: MAVEN_REPO_TOKEN # env variable for token in deploy
 
-      - name: Release snapshot package
-        if: contains(env.VERSION, 'SNAPSHOT')
-        run: mvn -U -B deploy
+      - name: Check Integrity
+        if: "!contains(env.VERSION, 'SNAPSHOT')"
+        run: mvn -B verify --file pom.xml
         env:
           MAVEN_REPO_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
           MAVEN_REPO_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
 
-      - name: Check Integrity
-        if: "!contains(env.VERSION, 'SNAPSHOT')"
-        run: mvn -U -B verify
+      - name: Release snapshot package to forgerock maven snapshot repository
+        if: contains(env.VERSION, 'SNAPSHOT')
+        run: mvn -B deploy --file pom.xml
         env:
           MAVEN_REPO_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
           MAVEN_REPO_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}

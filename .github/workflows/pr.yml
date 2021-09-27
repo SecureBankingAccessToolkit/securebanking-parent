@@ -1,8 +1,6 @@
 name: pull-request
 
-on:
-  pull_request:
-    branches: [ master ]
+on: [pull_request]
 
 jobs:
   build:
@@ -22,7 +20,7 @@ jobs:
           key: ${{ runner.os }}-maven2-${{ hashFiles('**/pom.xml') }}
 
       - name: Build and Test
-        run: mvn -U clean package
+        run: mvn -B clean package --file pom.xml
 
       - uses: codecov/codecov-action@v1
         with:
