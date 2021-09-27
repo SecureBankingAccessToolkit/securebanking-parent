@@ -38,11 +38,7 @@ jobs:
           server-password: MAVEN_REPO_TOKEN # env variable for token in deploy
 
       - name: Check Integrity
-        if: "!contains(env.VERSION, 'SNAPSHOT')"
         run: mvn -B verify --file pom.xml
-        env:
-          MAVEN_REPO_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
-          MAVEN_REPO_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
 
       - name: Release snapshot package to forgerock maven snapshot repository
         if: contains(env.VERSION, 'SNAPSHOT')
