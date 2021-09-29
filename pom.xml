@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2021 ForgeRock AS (obst@forgerock.com)
+    Copyright © 2020-2021 ForgeRock AS (obst@forgerock.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
 
     <groupId>com.forgerock.securebanking</groupId>
     <artifactId>securebanking-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>securebanking-parent</name>
     <packaging>pom</packaging>
     <description>A parent pom to be used by all ForgeRock Secure Banking projects</description>
@@ -56,12 +56,6 @@
             <organization>ForgeRock</organization>
             <organizationUrl>http://www.forgerock.com</organizationUrl>
         </developer>
-        <developer>
-            <name>Matt Wills</name>
-            <email>matt.wills@forgerock.com</email>
-            <organization>ForgeRock</organization>
-            <organizationUrl>http://www.forgerock.com</organizationUrl>
-        </developer>
     </developers>
 
     <licenses>
@@ -72,6 +66,10 @@
     </licenses>
 
     <properties>
+        <!-- will be the last year in the copyright license header year range -->
+        <!-- Will be changed every year -->
+        <copyright-current-year>2021</copyright-current-year>
+        <legal.path.header>legal/LICENSE-HEADER.txt</legal.path.header>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>14</java.version>
@@ -79,7 +77,8 @@
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>2.2.6.RELEASE</spring-cloud.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
-        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
+        <hibernate-validator-cdi.version>7.0.1.Final</hibernate-validator-cdi.version>
         <javax-el.version>3.0.1-b12</javax-el.version>
         <springfox.version>3.0.0</springfox.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
@@ -113,7 +112,7 @@
         <spring-boot-maven-plugin.version>2.3.7.RELEASE</spring-boot-maven-plugin.version>
         <build-helper-plugin.version>3.2.0</build-helper-plugin.version>
         <mycila-license-maven-plugin.version>4.1</mycila-license-maven-plugin.version>
-        <openapi-generator.version>4.3.1</openapi-generator.version>
+        <openapi-generator.version>5.2.1</openapi-generator.version>
         <git-changelog-maven-plugin.version>1.63</git-changelog-maven-plugin.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
@@ -308,6 +307,14 @@
                 <version>${hibernate-validator.version}</version>
                 <scope>test</scope>
             </dependency>
+            <!-- Validator provider portable extension -->
+            <!-- for test purposes -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator-cdi</artifactId>
+                <version>${hibernate-validator-cdi.version}</version>
+                <scope>test</scope>
+            </dependency>
 
             <dependency>
                 <groupId>org.glassfish</groupId>
@@ -393,26 +400,6 @@
                         </execution>
                     </executions>
                 </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>${build-helper-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>timestamp-property</id>
-                            <goals>
-                                <goal>timestamp-property</goal>
-                            </goals>
-                            <configuration>
-                                <name>current.year</name>
-                                <pattern>yyyy</pattern>
-                                <unit>year</unit>
-                                <locale>en,GB</locale>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
@@ -425,7 +412,7 @@
                     <configuration>
                         <licenseSets>
                             <licenseSet>
-                                <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
+                                <header>${legal.path.header}</header>
                                 <excludes>
                                     <exclude>**/README</exclude>
                                     <exclude>src/test/resources/**</exclude>
@@ -438,19 +425,19 @@
                             </licenseSet>
                         </licenseSets>
                         <properties>
-                            <year>2021</year>
+                            <currentYear>${copyright-current-year}</currentYear>
                             <owner>ForgeRock AS</owner>
                             <email>obst@forgerock.com</email>
                         </properties>
                         <mapping>
                             <java>JAVADOC_STYLE</java>
+                            <pom.xml>XML_STYLE</pom.xml>
                         </mapping>
                     </configuration>
                     <executions>
                         <execution>
                             <phase>process-sources</phase>
                             <goals>
-                                <goal>format</goal>
                                 <goal>check</goal>
                             </goals>
                         </execution>
@@ -484,17 +471,14 @@
         </pluginManagement>
 
         <plugins>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
             </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin>
-
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>

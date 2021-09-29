@@ -120,6 +120,33 @@ Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAccelerat
 66 - Add docker related files to licence header exclusion list (#26)
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/66
+### GitHub [#27](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/27) Feature/project structure and maven improvements
+[bd047ef34f0c8a0](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/bd047ef34f0c8a0) Jorge Sanchez Perez *2021-09-27 11:54:45*
+Feature/project structure and maven improvements (#27)
+
+* maven improvements
+
+* Github actions workflow improvements
+### GitHub [#28](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/28) Feature/project structure and maven improvements
+[1fede6b9b9119d8](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/1fede6b9b9119d8) Jorge Sanchez Perez *2021-09-27 15:34:15*
+Feature/project structure and maven improvements (#28)
+
+* maven improvements
+
+* Github actions workflow improvements
+
+* Fix year property for license
+### GitHub [#29](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/29) Feature/project structure and maven improvements
+[d6e2c10481c5aa7](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/d6e2c10481c5aa7) Jorge Sanchez Perez *2021-09-27 15:49:32*
+Feature/project structure and maven improvements (#29)
+
+* maven improvements
+
+* Github actions workflow improvements
+
+* Fix year property for license
+
+* Verify will run always to check the project integrity
 ### GitHub [#3](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/3) 4: Refactor how Java 14 is specified
 [dfd4913232b2ad4](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/dfd4913232b2ad4) Jamie Bowen *2020-11-30 16:24:20*
 4: Refactor how Java 14 is specified (#3)
