@@ -69,7 +69,7 @@
         <!-- will be the last year in the copyright license header year range -->
         <!-- Will be changed every year -->
         <copyright-current-year>2021</copyright-current-year>
-
+        <legal.path.header>legal/LICENSE-HEADER.txt</legal.path.header>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>14</java.version>
@@ -412,7 +412,7 @@
                     <configuration>
                         <licenseSets>
                             <licenseSet>
-                                <header>legal/LICENSE-HEADER.txt</header>
+                                <header>${legal.path.header}</header>
                                 <excludes>
                                     <exclude>**/README</exclude>
                                     <exclude>src/test/resources/**</exclude>
