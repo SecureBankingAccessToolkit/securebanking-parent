@@ -78,6 +78,7 @@
         <spring-cloud.version>2.2.6.RELEASE</spring-cloud.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
+        <hibernate-validator-cdi.version>7.0.1.Final</hibernate-validator-cdi.version>
         <javax-el.version>3.0.1-b12</javax-el.version>
         <springfox.version>3.0.0</springfox.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
@@ -304,6 +305,14 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- Validator provider portable extension -->
+            <!-- for test purposes -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator-cdi</artifactId>
+                <version>${hibernate-validator-cdi.version}</version>
                 <scope>test</scope>
             </dependency>
 
