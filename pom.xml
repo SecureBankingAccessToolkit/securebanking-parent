@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2021 ForgeRock AS (obst@forgerock.com)
+    Copyright © 2020-2021 ForgeRock AS (obst@forgerock.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -393,26 +393,6 @@
                         </execution>
                     </executions>
                 </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>${build-helper-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>timestamp-property</id>
-                            <goals>
-                                <goal>timestamp-property</goal>
-                            </goals>
-                            <configuration>
-                                <name>current.year</name>
-                                <pattern>yyyy</pattern>
-                                <unit>year</unit>
-                                <locale>en,GB</locale>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
@@ -425,7 +405,7 @@
                     <configuration>
                         <licenseSets>
                             <licenseSet>
-                                <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
+                                <header>legal/LICENSE-HEADER.txt</header>
                                 <excludes>
                                     <exclude>**/README</exclude>
                                     <exclude>src/test/resources/**</exclude>
@@ -438,19 +418,25 @@
                             </licenseSet>
                         </licenseSets>
                         <properties>
-                            <year>2021</year>
                             <owner>ForgeRock AS</owner>
                             <email>obst@forgerock.com</email>
                         </properties>
                         <mapping>
                             <java>JAVADOC_STYLE</java>
+                            <pom.xml>XML_STYLE</pom.xml>
                         </mapping>
                     </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.mycila</groupId>
+                            <artifactId>license-maven-plugin-git</artifactId>
+                            <version>${mycila-license-maven-plugin.version}</version>
+                        </dependency>
+                    </dependencies>
                     <executions>
                         <execution>
                             <phase>process-sources</phase>
                             <goals>
-                                <goal>format</goal>
                                 <goal>check</goal>
                             </goals>
                         </execution>
@@ -489,12 +475,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
             </plugin>
-
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
