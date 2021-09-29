@@ -56,12 +56,6 @@
             <organization>ForgeRock</organization>
             <organizationUrl>http://www.forgerock.com</organizationUrl>
         </developer>
-        <developer>
-            <name>Matt Wills</name>
-            <email>matt.wills@forgerock.com</email>
-            <organization>ForgeRock</organization>
-            <organizationUrl>http://www.forgerock.com</organizationUrl>
-        </developer>
     </developers>
 
     <licenses>
@@ -72,6 +66,10 @@
     </licenses>
 
     <properties>
+        <!-- will be the last year in the copyright license header year range -->
+        <!-- Will be changed every year -->
+        <copyright-current-year>2021</copyright-current-year>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>14</java.version>
@@ -418,6 +416,7 @@
                             </licenseSet>
                         </licenseSets>
                         <properties>
+                            <currentYear>${copyright-current-year}</currentYear>
                             <owner>ForgeRock AS</owner>
                             <email>obst@forgerock.com</email>
                         </properties>
@@ -426,13 +425,6 @@
                             <pom.xml>XML_STYLE</pom.xml>
                         </mapping>
                     </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.mycila</groupId>
-                            <artifactId>license-maven-plugin-git</artifactId>
-                            <version>${mycila-license-maven-plugin.version}</version>
-                        </dependency>
-                    </dependencies>
                     <executions>
                         <execution>
                             <phase>process-sources</phase>
@@ -470,14 +462,13 @@
         </pluginManagement>
 
         <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>com.mycila</groupId>
