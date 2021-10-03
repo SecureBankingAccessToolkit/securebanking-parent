@@ -169,6 +169,21 @@ that may be imported into clients such as the securebanking-rcs or
 securebanking-openbanking-aspsp projects.
 
 Issue: https://github.com/SecureBankingAcceleratorToolkit/SecureBankingAcceleratorToolkit/issues/4
+### GitHub [#30](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/30) License copyright year range
+[46e797207517793](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/46e797207517793) Jorge Sanchez Perez *2021-09-29 12:50:19*
+License copyright year range (#30)
+
+* Added support to license copyright year range based on inception year and current year
+
+* Fix security vulnerabilities in dependencies
+
+* Deleted the license git pluging because doesn't work properly on github actions
+
+* Fix security vulnerabilities in dependencies
+
+* Fix validator provider with portable extension CDI for test purposes
+
+* Added property to override the legal path header to run modules individualy with no license check issues
 ### GitHub [#4](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/4) Create check build github action
 [f05aa038c63df9f](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/f05aa038c63df9f) Jamie Bowen *2020-12-01 10:54:09*
 Create check build github action (#4)

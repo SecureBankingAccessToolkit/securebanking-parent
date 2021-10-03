@@ -22,7 +22,7 @@
 
     <groupId>com.forgerock.securebanking</groupId>
     <artifactId>securebanking-parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>securebanking-parent</name>
     <packaging>pom</packaging>
     <description>A parent pom to be used by all ForgeRock Secure Banking projects</description>
@@ -89,7 +89,7 @@
         <guava.version>30.0-jre</guava.version>
         <lombok.version>1.18.16</lombok.version>
         <bouncycastle.version>1.67</bouncycastle.version>
-        <model-mapper.version>2.3.8</model-mapper.version>
+        <model-mapper.version>2.4.4</model-mapper.version>
         <nimbus-jose.version>9.1.3</nimbus-jose.version>
         <logstash.version>6.4</logstash.version>
 
