@@ -184,6 +184,18 @@ License copyright year range (#30)
 * Fix validator provider with portable extension CDI for test purposes
 
 * Added property to override the legal path header to run modules individualy with no license check issues
+### GitHub [#31](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/31) 90: account access and domestic payment journeys
+[93f1a1c5d07b2c0](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/93f1a1c5d07b2c0) Jorge Sanchez Perez *2021-10-03 14:49:42*
+90: account access and domestic payment journeys (#31)
+
+- Upgrade modelmapper version to 2.4.4
+Issue: https://github.com/SecureBankingAccessToolkit/SecureBankingAccessToolkit/issues/90
+### GitHub [#32](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/32) Update parent dependencies and version
+[1f9d5bc47ab0e90](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/1f9d5bc47ab0e90) Jorge Sanchez Perez *2021-10-07 16:21:17*
+Update parent dependencies and version (#32)
+
+- Upgrade lombok
+- Upgrade version to 1.0.3-SNAPSHOT
 ### GitHub [#4](https://github.com/SecureBankingAccessToolkit/securebanking-parent/pull/4) Create check build github action
 [f05aa038c63df9f](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/f05aa038c63df9f) Jamie Bowen *2020-12-01 10:54:09*
 Create check build github action (#4)
