@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2020-2021 ForgeRock AS (obst@forgerock.com)
+    Copyright © 2020-2022 ForgeRock AS (obst@forgerock.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 
     <groupId>com.forgerock.securebanking</groupId>
     <artifactId>securebanking-parent</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <name>securebanking-parent</name>
     <packaging>pom</packaging>
     <description>A parent pom to be used by all ForgeRock Secure Banking projects</description>
@@ -67,7 +67,7 @@
     <properties>
         <!-- will be the last year in the copyright license header year range -->
         <!-- Will be changed every year -->
-        <copyright-current-year>2021</copyright-current-year>
+        <copyright-current-year>2022</copyright-current-year>
         <legal.path.header>legal/LICENSE-HEADER.txt</legal.path.header>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -441,7 +441,7 @@
                             <email>obst@forgerock.com</email>
                         </properties>
                         <mapping>
-                            <java>JAVADOC_STYLE</java>
+                            <java>SLASHSTAR_STYLE</java>
                             <pom.xml>XML_STYLE</pom.xml>
                         </mapping>
                     </configuration>
@@ -449,7 +449,7 @@
                         <execution>
                             <phase>process-sources</phase>
                             <goals>
-                                <goal>check</goal>
+                                <goal>format</goal>
                             </goals>
                         </execution>
                     </executions>
