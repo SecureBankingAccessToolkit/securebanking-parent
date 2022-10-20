@@ -100,7 +100,7 @@
         <mockito.version>3.5.15</mockito.version>
         <flapdoodle-mongo.version>2.2.0</flapdoodle-mongo.version>
         <wiremock.version>2.27.2</wiremock.version>
-        <inject.resources.version>0.1.0</inject.resources.version>
+        <inject.resources.version>0.3.2</inject.resources.version>
         <!-- TODO - Can we get rid of this? -->
         <jmockdata.version>4.2.0</jmockdata.version>
 
@@ -268,7 +268,17 @@
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${springfox.version}</version>
             </dependency>
-
+            <!-- https://github.com/hosuaby/inject-resources -->
+            <dependency>
+                <groupId>io.hosuaby</groupId>
+                <artifactId>inject-resources-core</artifactId>
+                <version>${inject.resources.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.hosuaby</groupId>
+                <artifactId>inject-resources-junit-jupiter</artifactId>
+                <version>${inject.resources.version}</version>
+            </dependency>
             <!-- 3rd Party Test dependencies -->
 
             <!-- JUnit 5 -->
@@ -352,19 +362,6 @@
                 <groupId>com.github.tomakehurst</groupId>
                 <artifactId>wiremock</artifactId>
                 <version>${wiremock.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- https://hosuaby.github.io/inject-resources/0.1.0/asciidoc/#inject-resources-junit-jupiter -->
-            <dependency>
-                <groupId>com.adelean</groupId>
-                <artifactId>inject-resources-core</artifactId>
-                <version>${inject.resources.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.adelean</groupId>
-                <artifactId>inject-resources-junit-jupiter</artifactId>
-                <version>${inject.resources.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
