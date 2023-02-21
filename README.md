@@ -1,6 +1,6 @@
 # secure-api-gateway-parent  
 
-This project contains a maven project object model file (POM file) for use by all ForgeRock Java Secure Api Gateway projects.
+This project contains a maven project object model file (POM file) for use by all ForgeRock Java Secure API Gateway projects.
 
 ## Dependency Management
 
