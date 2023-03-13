@@ -93,13 +93,13 @@ jobs:
       - name: Create branch context
         id: create_branch_context
         run: |
-          echo "release_branch=release/${{ steps.create-context.outputs.release_ref }}" >> $GITHUB_OUTPUT
+          echo "release_branch=release/${{ steps.create_context.outputs.release_ref }}" >> $GITHUB_OUTPUT
 
       - name: create release branch
         id: create_release_branch
         run: |
-          echo "Release ref: ${{ steps.create-context.outputs.release_ref }}"
-          git checkout -b release/${{ steps.create-context.outputs.release_ref }}
+          echo "Release branch: ${{ steps.create_branch_context.outputs.release_branch }}"
+          git checkout -b ${{ steps.create_branch_context.outputs.release_branch }}
 
       - name: Update dependencies
         id: update_dependencies
@@ -113,12 +113,12 @@ jobs:
         run: |
           mvn versions:commit # accepts the changes and removes the backup of the pom 
           git add .
-          git commit -m "Release ${{ steps.create-context.outputs.release_ref }} branch ready"
-          git push origin release/${{ steps.create-context.outputs.release_ref }}
+          git commit -m "Release ${{ steps.create_context.outputs.release_ref }} branch ready"
+          git push origin ${{ steps.create_branch_context.outputs.release_branch }}
 
       - name: create release tag
         id: release_tag
         if: ${{ inputs.tag }} != ''
         run: |
-          git tag ${{ steps.create-context.outputs.tag_ref }}
-          git push origin tag ${{ steps.create-context.outputs.tag_ref }}
+          git tag ${{ steps.create_context.outputs.tag_ref }}
+          git push origin tag ${{ steps.create_context.outputs.tag_ref }}
