@@ -42,7 +42,7 @@ env:
 jobs:
   release_prepare: # prepare for a release in scm, creates the tag and release branch with the proper release versions
     name: Call release prepare
-    uses: ./github/workflows/release_prepare.yml
+    uses: ./.github/workflows/release_prepare.yml
     with:
       tag: ${{ inputs.tag }}
       is_final_release: ${{ inputs.is_final_release }}
