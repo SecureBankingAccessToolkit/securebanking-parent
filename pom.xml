@@ -27,15 +27,6 @@
     <description>A parent pom to be used by all ForgeRock Secure Api Gateway projects</description>
     <url>https://github.com/SecureApiGateway/secure-api-gateway-parent</url>
 
-    <scm>
-        <connection>scm:git:git@github.com:SecureApiGateway/secure-api-gateway-parent.git
-        </connection>
-        <developerConnection>scm:git:git@github.com:SecureApiGateway/secure-api-gateway-parent.git
-        </developerConnection>
-        <url>https://github.com/SecureApiGateway/secure-api-gateway-parent.git</url>
-        <tag>HEAD</tag>
-    </scm>
-
     <organization>
         <name>ForgeRock</name>
         <url>http://www.forgerock.org</url>
@@ -52,6 +43,18 @@
         <developer>
             <name>Jorge Sanchez-Perez</name>
             <email>jorge.sanchez-perez@forgerock.com</email>
+            <organization>ForgeRock</organization>
+            <organizationUrl>http://www.forgerock.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Dan Badham</name>
+            <email>dan.badham@forgerock.com</email>
+            <organization>ForgeRock</organization>
+            <organizationUrl>http://www.forgerock.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Shaun Harrison</name>
+            <email>shaun.harrison@forgerock.com</email>
             <organization>ForgeRock</organization>
             <organizationUrl>http://www.forgerock.com</organizationUrl>
         </developer>
@@ -106,7 +109,7 @@
 
         <!-- Plugin versions -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
+        <versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M1</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
@@ -115,7 +118,6 @@
         <build-helper-plugin.version>3.2.0</build-helper-plugin.version>
         <mycila-license-maven-plugin.version>4.1</mycila-license-maven-plugin.version>
         <openapi-generator.version>5.2.1</openapi-generator.version>
-        <git-changelog-maven-plugin.version>1.63</git-changelog-maven-plugin.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
     </properties>
@@ -381,10 +383,11 @@
                     </configuration>
                 </plugin>
 
+                <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/versions-maven-plugin -->
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release-plugin.version}</version>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${versions-maven-plugin.version}</version>
                 </plugin>
 
                 <plugin>
@@ -499,6 +502,10 @@
 
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
             </plugin>
@@ -510,61 +517,6 @@
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
             </plugin>
-
-            <plugin>
-                <groupId>se.bjurr.gitchangelog</groupId>
-                <artifactId>git-changelog-maven-plugin</artifactId>
-                <version>${git-changelog-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>changelog</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>git-changelog</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <noIssueName>test</noIssueName>
-                            <templateContent>
-                                <![CDATA[
-# Git Changelog Maven plugin changelog
-Changelog of Git Changelog Maven plugin.
-{{#tags}}
-## {{name}}
- {{#issues}}
-  {{#hasLink}}
-### {{name}} [{{issue}}]({{link}}) {{title}}
-  {{/hasLink}}
-  {{#commits}}
-[{{hash}}](https://github.com/SecureBankingAcceleratorToolkit/securebanking-openbanking-aspsp/commit/{{hash}}) {{authorName}} *{{commitTime}}*
-{{{message}}}
-  {{/commits}}
- {{/issues}}
-{{/tags}}
-]]>
-                            </templateContent>
-                            <file>CHANGELOG.md</file>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
-
-    <distributionManagement>
-
-        <repository>
-            <id>maven.forgerock.org-community</id>
-            <name>maven.forgerock.org-releases</name>
-            <url>https://maven.forgerock.org:443/repo/community</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>maven.forgerock.org-community-snapshots</id>
-            <name>maven.forgerock.org-snapshots</name>
-            <url>https://maven.forgerock.org:443/repo/community</url>
-        </snapshotRepository>
-
-    </distributionManagement>
 </project>
