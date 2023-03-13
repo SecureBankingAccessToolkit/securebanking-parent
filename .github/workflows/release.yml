@@ -34,10 +34,10 @@ on:
         default: ''
 env:
   GH_TOKEN: ${{ github.token }}
-  GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_USERNAME }}
-  GIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL }}
-  GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMIT_USERNAME }}
-  GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL }}
+  GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
+  GIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
+  GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
+  GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
 
 jobs:
   release_prepare: # prepare for a release in scm, creates the tag and release branch with the proper release versions
@@ -74,8 +74,8 @@ jobs:
         id: gpg
         uses: crazy-max/ghaction-import-gpg@v5
         with:
-          gpg_private_key: ${{ secrets.BOT_GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.BOT_GPG_KEY_PASSPHRASE }}
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY_BOT }}
+          passphrase: ${{ secrets.GPG_KEY_PASSPHRASE_BOT }}
           git_user_signingkey: true
           git_commit_gpgsign: true
 
