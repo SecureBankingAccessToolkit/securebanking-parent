@@ -1,5 +1,5 @@
-name: Create release
-id: create_release_workflow
+name: create_release_workflow
+run-name: Create release
 # **What it does**:
 # Reuse workflow 'prepare-release': update versions, create tag and release branch with release versions
 # Build the maven project as release version and publish the artifact in forgerock maven repo
@@ -84,14 +84,14 @@ jobs:
 
       - name: Create github release
         id: release
-        if: ${{ step.deploy.outcome }} == 'success'
+        if: ${{ steps.deploy.outcome }} == 'success'
         run: |
           # Create a release from input tag
           gh release create  --verify-tag ${{ needs.release_prepare.outputs.tag_ref }} -t "${{ needs.release_prepare.outputs.release_ref }}" --notes "${{ inputs.notes }}"
 
       - name: Prepare next development iteration
         id: prepare_next_dev
-        if: ${{ step.release.outcome }} == 'success'
+        if: ${{ steps.release.outcome }} == 'success'
         run: |
           mvn versions:set -DnextSnapshot
           git add .
@@ -99,6 +99,6 @@ jobs:
           git push origin HEAD:${{ needs.release_prepare.outputs.release_branch }}
 
       - name: create pull request
-        if: ${{ steps.prepare_next_dev.outcome }] == 'success'
+        if: ${{ steps.prepare_next_dev.outcome }} == 'success'
         run: |
           gh pr create -H ${{ needs.release_prepare.outputs.release_branch }} -B master --title "Release ${{ needs.release_prepare.outputs.release_ref }} created" --body "- Prepare the next development iteration"
