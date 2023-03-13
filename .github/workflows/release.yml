@@ -23,11 +23,6 @@ on:
         required: false
         type: string
         default: 1
-      set_property_command:
-        description: "Command to set properties version for dependencies"
-        required: false
-        type: string
-        default: ''
 env:
   GH_TOKEN: ${{ github.token }}
   GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
@@ -42,7 +37,6 @@ jobs:
     with:
       is_final_release: ${{ inputs.is_final_release }}
       candidate_number: ${{ inputs.candidate_number }}
-      set_property_command: ${{ inputs.set_property_command }}
     secrets: inherit
 
   release_perform:
