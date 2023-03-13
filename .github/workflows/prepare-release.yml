@@ -3,14 +3,6 @@ id: prepare_release_workflow
 on:
   workflow_call:
     inputs:
-      tag:
-        required: false
-        type: string
-        default: ''
-      set_property_command:
-        required: false
-        type: string
-        default: ''
       is_final_release:
         required: false
         type: boolean
@@ -51,8 +43,6 @@ jobs:
       - uses: actions/checkout@v3
         id: checkout
         name: checkout master
-        with:
-          ref: ${{ inputs.tag }} # if tag is empty uses the default branch
 
       # https://github.com/crazy-max/ghaction-import-gpg
       # https://httgp.com/signing-commits-in-github-actions/
@@ -101,13 +91,6 @@ jobs:
           echo "Release branch: ${{ steps.create_branch_context.outputs.release_branch }}"
           git checkout -b ${{ steps.create_branch_context.outputs.release_branch }}
 
-      - name: Update dependencies
-        id: update_dependencies
-        if: ${{ inputs.set_property_command }} != ''
-        run: |
-          echo "Command to execute: ${{ inputs.set_property_command }}"
-          ${{ inputs.set_property_command }}
-
       - name: Push release branch
         id: push_release_branch
         run: |
@@ -118,7 +101,6 @@ jobs:
 
       - name: create release tag
         id: release_tag
-        if: ${{ inputs.tag }} != ''
         run: |
           git tag ${{ steps.create_context.outputs.tag_ref }}
           git push origin tag ${{ steps.create_context.outputs.tag_ref }}

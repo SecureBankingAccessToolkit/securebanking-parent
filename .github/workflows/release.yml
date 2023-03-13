@@ -8,11 +8,6 @@ id: create_release_workflow
 on:
   workflow_dispatch:
     inputs:
-      tag:
-        description: "Provide the tag if you want create the release from existing tag"
-        required: false
-        type: string
-        default: ''
       notes:
         description: "Release notes"
         required: false
@@ -45,7 +40,6 @@ jobs:
     name: Call release prepare
     uses: ./.github/workflows/release_prepare.yml
     with:
-      tag: ${{ inputs.tag }}
       is_final_release: ${{ inputs.is_final_release }}
       candidate_number: ${{ inputs.candidate_number }}
       set_property_command: ${{ inputs.set_property_command }}
