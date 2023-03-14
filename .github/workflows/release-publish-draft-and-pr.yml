@@ -1,0 +1,59 @@
+name: release-publish-draft-and-pr
+run-name: GitHub Release '${{ inputs.release_version_number }}'
+on:
+  workflow_call:
+    inputs:
+      release_version_number:
+        required: true
+        type: string
+      release_branch_ref:
+        required: true
+        type: string
+      release_tag_ref:
+        required: true
+        type: string
+      release_notes:
+        description: "Release notes"
+        required: false
+        type: string
+        default: ''
+      reviewer:
+        description: "Request reviews from people or teams by their handle"
+        required: false
+        type: string
+        default: 'SecureApiGateway/release-reviewers'
+
+env:
+  GH_TOKEN: ${{ github.token }} # needed to run gh cli commands
+
+jobs:
+
+  release_publish_draft:
+    name: Publish release draft and creates PR
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+        id: checkout_release_branch
+        name: checkout release branch
+        with:
+          ref: ${{ inputs.release_branch_ref}} # release branch
+
+      # Creates a release draft from tag
+      - name: Create github release draft
+        id: gh_release_draft
+        run: |
+          # Create a release from input tag
+          gh release create  --draft \
+          --verify-tag ${{ inputs.release_tag_ref }} \
+          --title "${{ inputs.release_version_number }}" --notes "${{ inputs.release_notes }}"
+
+      - name: create pull request
+        id: gh_pull_request
+        run: |
+          gh pr create --base master \
+          --head ${{ inputs.release_branch_ref}} \
+          --title "Release ${{ inputs.release_version_number }} created" \
+          --body "- Prepare for the next development iteration" \
+          # currently there is an open issue regarding set a team as reviewer: https://github.com/cli/cli/issues/6395
+          # --reviewer ${{ inputs.reviewer }}
