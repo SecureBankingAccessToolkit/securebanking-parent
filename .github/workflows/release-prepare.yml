@@ -67,7 +67,6 @@ jobs:
           git push origin tag v${{ env.SNAPSHOT_MASTER_VERSION }}
           echo "tag_ref=v${{ env.SNAPSHOT_MASTER_VERSION }}" >> $GITHUB_OUTPUT
           
-
       - name: Remove snapshots suffix
         id: remove_snapshots
         run: |
