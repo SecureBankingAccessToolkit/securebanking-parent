@@ -37,7 +37,9 @@ jobs:
     with:
       is_final_release: ${{ inputs.is_final_release }}
       candidate_number: ${{ inputs.candidate_number }}
-    secrets: inherit
+    secrets:
+      GPG_PRIVATE_KEY_BOT: ${{ secrets.GPG_PRIVATE_KEY_BOT }}
+      GPG_KEY_PASSPHRASE_BOT: ${{ secrets.GPG_KEY_PASSPHRASE_BOT }}
 
   release_perform:
     runs-on: ubuntu-latest
@@ -89,11 +91,20 @@ jobs:
           # Create a release from input tag
           gh release create  --verify-tag ${{ needs.release_prepare.outputs.tag_ref }} -t "${{ needs.release_prepare.outputs.release_ref }}" --notes "${{ inputs.notes }}"
 
+      - name: set snapshot
+        id: set-snapshot
+        run: |
+          mvn versions:set -DnextSnapshot
+
+      - name: remove pom backups
+        id: remove-pom-backups
+        run: |
+          mvn versions:commit
+
       - name: Prepare next development iteration
         id: prepare_next_dev
         if: ${{ steps.release.outcome }} == 'success'
         run: |
-          mvn versions:set -DnextSnapshot
           git add .
           git commit -m "Prepare the next development iteration"
           git push origin HEAD:${{ needs.release_prepare.outputs.release_branch }}
