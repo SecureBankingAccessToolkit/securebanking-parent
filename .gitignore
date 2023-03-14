@@ -2,3 +2,4 @@
 .settings/
 .okhttpcache/
 .java-version
+*.versionsBackup
