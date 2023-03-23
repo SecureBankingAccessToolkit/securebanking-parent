@@ -88,7 +88,7 @@ jobs:
       - name: push branch
         id: push_branch
         run: |
-          git push --set-upstream origin ${{ steps.create_release_context.outputs.release_branch }}
+          git push -f --set-upstream origin ${{ steps.create_release_context.outputs.release_branch }}
 
       # Release prepare
       # - Change the version in the POM from x-SNAPSHOT to the new version provided for the release_version_number input
