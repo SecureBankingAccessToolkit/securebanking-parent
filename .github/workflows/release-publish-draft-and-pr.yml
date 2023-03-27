@@ -55,6 +55,7 @@ jobs:
 
       - name: create pull request
         id: gh_pull_request
+        if: ${{ inputs.create_pr }}
         run: |
           gh pr create --base master \
           --head ${{ inputs.release_branch_ref}} \
