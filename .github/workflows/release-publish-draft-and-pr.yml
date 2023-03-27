@@ -22,6 +22,11 @@ on:
         required: false
         type: string
         default: 'SecureApiGateway/release-reviewers'
+      create_pr:
+        description: "Should it create a pull request"
+        required: false
+        type: boolean
+        default: true
 
 env:
   GH_TOKEN: ${{ github.token }} # needed to run gh cli commands
