@@ -1,15 +1,15 @@
-name: release-prepare
-run-name: Prepare Release '${{ inputs.release_version_number }}'
+name: release-prepare-no-maven
+run-name: Prepare Release (no maven) '${{ inputs.release_version_number }}'
+# Workflow to prepare the release for projects without maven
+# - Creates the release branch
+# - Creates the release tag
+# - Push release branch and tag
 on:
   workflow_call:
     inputs:
       release_version_number:
         required: true
         type: string
-      java_version:
-        required: false
-        type: string
-        default: '14'
     outputs:
       release_branch_ref:
         description: "Release branch"
@@ -31,7 +31,7 @@ env:
 
 jobs:
   release_prepare:
-    name: Release prepare
+    name: Release prepare no maven
     runs-on: ubuntu-latest
     # Map the job outputs to step outputs
     outputs:
