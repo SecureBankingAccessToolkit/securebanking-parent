@@ -10,6 +10,7 @@ on:
         required: true
         type: string
       with_maven:
+        description: "Flag to skip the step to set java and maven configuration"
         required: false
         type: boolean
         default: true
