@@ -22,6 +22,11 @@ on:
         required: false
         type: string
         default: 'SecureApiGateway/release-reviewers'
+      create_pr:
+        description: "Should it create a pull request"
+        required: false
+        type: boolean
+        default: true
 
 env:
   GH_TOKEN: ${{ github.token }} # needed to run gh cli commands
@@ -50,6 +55,7 @@ jobs:
 
       - name: create pull request
         id: gh_pull_request
+        if: ${{ inputs.create_pr }}
         run: |
           gh pr create --base master \
           --head ${{ inputs.release_branch_ref}} \

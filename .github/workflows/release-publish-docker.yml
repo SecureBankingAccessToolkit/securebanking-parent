@@ -9,6 +9,11 @@ on:
       release_tag_ref:
         required: true
         type: string
+      with_maven:
+        description: "Flag to skip the step to set java and maven configuration"
+        required: false
+        type: boolean
+        default: true
       java_version:
         required: false
         type: string
@@ -34,6 +39,7 @@ jobs:
 
       # set java and cache
       - uses: actions/setup-java@v3
+        if: ${{ inputs.with_maven }}
         id: set_java_maven
         name: set java and maven cache
         with:
