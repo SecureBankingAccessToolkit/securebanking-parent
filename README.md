@@ -8,7 +8,7 @@ The parent pom manages the following dependency version in the dependencyManagem
 
 - Spring Boot artifacts via the import of the spring-boot bom file
 - Other 3rd party dependencies
-- Test depenencies
+- Test dependencies
 
 ## Defines the Java version for the project
 
