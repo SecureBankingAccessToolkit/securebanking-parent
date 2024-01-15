@@ -21,7 +21,7 @@
 
     <groupId>com.forgerock.sapi.gateway</groupId>
     <artifactId>secure-api-gateway-parent</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
+    <version>2.3.0-SNAPSHOT</version>
     <name>securebanking-parent</name>
     <packaging>pom</packaging>
     <description>A parent pom to be used by all ForgeRock Secure Api Gateway projects</description>
@@ -76,8 +76,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>14</java.version>
 
-        <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
-        <spring-cloud.version>2.2.6.RELEASE</spring-cloud.version>
+        <spring-boot.version>2.7.18</spring-boot.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
         <hibernate-validator-cdi.version>7.0.1.Final</hibernate-validator-cdi.version>
@@ -101,7 +100,7 @@
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <assertj.version>3.18.1</assertj.version>
         <mockito.version>3.5.15</mockito.version>
-        <flapdoodle-mongo.version>2.2.0</flapdoodle-mongo.version>
+        <flapdoodle-mongo.version>4.12.0</flapdoodle-mongo.version>
         <wiremock.version>2.27.2</wiremock.version>
         <inject.resources.version>0.3.2</inject.resources.version>
         <!-- TODO - Can we get rid of this? -->
@@ -134,33 +133,6 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-
-            <!-- Spring Cloud Dependencies -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-zipkin</artifactId>
-                <version>${spring-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-sleuth</artifactId>
-                <version>${spring-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-config</artifactId>
-                <version>${spring-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-config-server</artifactId>
-                <version>${spring-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-config-client</artifactId>
-                <version>${spring-cloud.version}</version>
             </dependency>
 
             <!-- Other 3rd Party -->
@@ -362,6 +334,12 @@
             <dependency>
                 <groupId>de.flapdoodle.embed</groupId>
                 <artifactId>de.flapdoodle.embed.mongo</artifactId>
+                <version>${flapdoodle-mongo.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.flapdoodle.embed</groupId>
+                <artifactId>de.flapdoodle.embed.mongo.spring27x</artifactId>
                 <version>${flapdoodle-mongo.version}</version>
                 <scope>test</scope>
             </dependency>
