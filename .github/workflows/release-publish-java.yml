@@ -12,7 +12,7 @@ on:
       java_version:
         required: false
         type: string
-        default: '14'
+        default: '17'
     secrets:
       FR_ARTIFACTORY_USER:
         required: true

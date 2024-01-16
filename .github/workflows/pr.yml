@@ -13,7 +13,7 @@ jobs:
         name: set java and maven cache
         with:
           distribution: 'adopt'
-          java-version: '14'
+          java-version: '17'
           architecture: x64
           cache: 'maven'
 
