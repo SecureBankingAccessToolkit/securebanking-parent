@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2020-2022 ForgeRock AS (obst@forgerock.com)
+    Copyright © 2020-2024 ForgeRock AS (obst@forgerock.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -70,7 +70,7 @@
     <properties>
         <!-- will be the last year in the copyright license header year range -->
         <!-- Will be changed every year -->
-        <copyright-current-year>2022</copyright-current-year>
+        <copyright-current-year>2024</copyright-current-year>
         <legal.path.header>legal/LICENSE-HEADER.txt</legal.path.header>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
