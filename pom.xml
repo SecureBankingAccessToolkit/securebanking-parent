@@ -74,7 +74,7 @@
         <legal.path.header>legal/LICENSE-HEADER.txt</legal.path.header>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>14</java.version>
+        <java.version>17</java.version>
 
         <spring-boot.version>2.7.18</spring-boot.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
