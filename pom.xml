@@ -293,7 +293,7 @@
             </dependency>
             <dependency>
                 <groupId>de.flapdoodle.embed</groupId>
-                <artifactId>de.flapdoodle.embed.mongo.spring27x</artifactId>
+                <artifactId>de.flapdoodle.embed.mongo.spring3x</artifactId>
                 <version>${flapdoodle-mongo.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -311,6 +311,7 @@
                         <release>${java.version}</release>
                         <verbose>false</verbose>
                         <fork>true</fork>
+                        <parameters>true</parameters>
                     </configuration>
                 </plugin>
 
