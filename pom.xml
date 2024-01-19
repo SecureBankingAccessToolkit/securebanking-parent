@@ -109,7 +109,7 @@
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-        <spring-boot-maven-plugin.version>2.3.7.RELEASE</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>3.2.1</spring-boot-maven-plugin.version>
         <build-helper-plugin.version>3.2.0</build-helper-plugin.version>
         <mycila-license-maven-plugin.version>4.1</mycila-license-maven-plugin.version>
         <openapi-generator.version>5.2.1</openapi-generator.version>
