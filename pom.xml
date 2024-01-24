@@ -82,6 +82,7 @@
         <hibernate-validator-cdi.version>8.0.1.Final</hibernate-validator-cdi.version>
         <javax-el.version>3.0.1-b12</javax-el.version>
         <swagger-annotations.version>1.6.12</swagger-annotations.version>
+        <swagger-annotations-v3.version>2.2.20</swagger-annotations-v3.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jaxb.sun.version>2.3.4</jaxb.sun.version>
         <joda-time.version>2.10.8</joda-time.version>
@@ -112,7 +113,7 @@
         <spring-boot-maven-plugin.version>3.2.1</spring-boot-maven-plugin.version>
         <build-helper-plugin.version>3.2.0</build-helper-plugin.version>
         <mycila-license-maven-plugin.version>4.1</mycila-license-maven-plugin.version>
-        <openapi-generator.version>5.2.1</openapi-generator.version>
+        <openapi-generator.version>7.2.0</openapi-generator.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
     </properties>
@@ -219,6 +220,12 @@
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger-annotations.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations-v3.version}</version>
             </dependency>
 
             <!-- 3rd Party Test dependencies -->
