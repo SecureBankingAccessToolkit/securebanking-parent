@@ -70,7 +70,7 @@ jobs:
       - name: Build Docker Image
         id: build_docker
         run: |
-          make docker tag=${{ env.GIT_SHA_SHORT }} repo=${{ secrets.GCR_RELEASE_REPO }}
-          docker tag eu.gcr.io/${{ secrets.GCR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} eu.gcr.io/${{ secrets.GCR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:latest
-          docker tag eu.gcr.io/${{ secrets.GCR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} eu.gcr.io/${{ secrets.GCR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ inputs.release_version_number }}
-          docker push --all-tags eu.gcr.io/${{ secrets.GCR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}
+          make docker tag=${{ env.GIT_SHA_SHORT }} repo=${{ vars.GAR_RELEASE_REPO }}
+          docker tag ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:latest
+          docker tag ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ inputs.release_version_number }}
+          docker push ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }} --all-tags
