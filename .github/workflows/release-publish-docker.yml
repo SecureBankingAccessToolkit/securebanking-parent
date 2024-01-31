@@ -49,27 +49,23 @@ jobs:
           architecture: x64
           cache: 'maven'
 
-      - uses: google-github-actions/auth@v0
-        id: gcloud_auth
+      - name: Auth to GCP
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCR_CREDENTIALS_JSON }}
 
       - name: Set up Cloud SDK
-        id: gcloud_sdk
-        uses: google-github-actions/setup-gcloud@v0
+        uses: google-github-actions/setup-gcloud@v1.1.1
 
-      - name: Set up docker auth
-        id: gcloud_docker_auth
+      - name: Auth Docker
         run: |
-          gcloud auth configure-docker
+          gcloud auth configure-docker europe-west4-docker.pkg.dev
 
-      - name: prepare context
-        id: prepare_context
+      - name: Prepare Context
         run: |
           echo "GIT_SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Build Docker Image
-        id: build_docker
         run: |
           make docker tag=${{ env.GIT_SHA_SHORT }} repo=${{ inputs.GAR_RELEASE_REPO }}
           docker tag ${{ inputs.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} ${{ inputs.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:latest
