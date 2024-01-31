@@ -21,10 +21,11 @@ on:
       SERVICE_NAME:
         required: true
         type: string
+      GAR_RELEASE_REPO:
+        type: string
+        required: true
     secrets:
       GCR_CREDENTIALS_JSON:
-        required: true
-      GCR_RELEASE_REPO:
         required: true
 jobs:
   build_publish_docker_image:
@@ -70,7 +71,7 @@ jobs:
       - name: Build Docker Image
         id: build_docker
         run: |
-          make docker tag=${{ env.GIT_SHA_SHORT }} repo=${{ vars.GAR_RELEASE_REPO }}
-          docker tag ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:latest
-          docker tag ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ inputs.release_version_number }}
-          docker push ${{ vars.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }} --all-tags
+          make docker tag=${{ env.GIT_SHA_SHORT }} repo=${{ inputs.GAR_RELEASE_REPO }}
+          docker tag ${{ inputs.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} ${{ inputs.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:latest
+          docker tag ${{ inputs.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ env.GIT_SHA_SHORT }} ${{ inputs.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }}:${{ inputs.release_version_number }}
+          docker push ${{ inputs.GAR_RELEASE_REPO }}/securebanking/${{ inputs.SERVICE_NAME }} --all-tags
