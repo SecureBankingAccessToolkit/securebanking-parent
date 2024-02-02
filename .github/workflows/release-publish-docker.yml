@@ -39,12 +39,12 @@ jobs:
           ref: ${{ inputs.release_tag_ref }} # tag created by maven release plugin prepare goal
 
       # set java and cache
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         if: ${{ inputs.with_maven }}
         id: set_java_maven
         name: set java and maven cache
         with:
-          distribution: 'adopt'
+          distribution: 'zulu'
           java-version: ${{ inputs.java_version }}
           architecture: x64
           cache: 'maven'
