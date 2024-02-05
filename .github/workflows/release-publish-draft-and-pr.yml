@@ -27,9 +27,9 @@ on:
         required: false
         type: boolean
         default: true
+    secrets:
       github_token:
         required: true
-        type: string
 
 env:
   GH_TOKEN: ${{ inputs.github_token }} # needed to run gh cli commands
