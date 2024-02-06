@@ -11,9 +11,6 @@ on:
         type: string
         default: '17'
     outputs:
-      release_branch_ref:
-        description: "Release branch"
-        value: ${{ jobs.release_prepare.outputs.release_branch_ref }}
       release_tag_ref:
         description: "Release tag"
         value: ${{ jobs.release_prepare.outputs.release_tag_ref }}
@@ -39,19 +36,16 @@ jobs:
     runs-on: ubuntu-latest
     # Map the job outputs to step outputs
     outputs:
-      release_branch_ref: ${{ steps.create_release_context.outputs.release_branch }}
       release_tag_ref: ${{ steps.create_release_context.outputs.release_tag }}
 
     steps:
       # https://github.com/actions/checkout
-      - uses: actions/checkout@v4
-        id: checkout_master
-        name: checkout master
+      - name: Checkout Parent Repo
+        uses: actions/checkout@v4
 
       # set java and cache
-      - uses: actions/setup-java@v4
-        id: set_java_maven
-        name: set java and maven cache
+      - name: Set Java and Maven Cache
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: ${{ inputs.java_version }}
@@ -61,8 +55,7 @@ jobs:
       # https://github.com/crazy-max/ghaction-import-gpg
       # https://httgp.com/signing-commits-in-github-actions/
       # Prepare the environment to sign the commits
-      - name: Import GPG key
-        id: gpg
+      - name: Import GPG Key
         uses: crazy-max/ghaction-import-gpg@v5
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY_BOT }}
@@ -70,25 +63,11 @@ jobs:
           git_user_signingkey: true
           git_commit_gpgsign: true
 
-      # Create branch context variable
-      - name: Create release context
+      # Create tag context variable
+      - name: Create Release Context
         id: create_release_context
         run: |
-          echo "release_branch=release/${{ inputs.release_version_number }}" >> $GITHUB_OUTPUT
           echo "release_tag=v${{ inputs.release_version_number }}" >> $GITHUB_OUTPUT
-
-      # create the release branch with release version number provided
-      - name: create release branch
-        id: create_release_branch
-        run: |
-          echo "Release branch: ${{ steps.create_release_context.outputs.release_branch }}"
-          git checkout -b ${{ steps.create_release_context.outputs.release_branch }}
-
-      # push the branch to remote repository
-      - name: push branch
-        id: push_branch
-        run: |
-          git push -f --set-upstream origin ${{ steps.create_release_context.outputs.release_branch }}
 
       # Release prepare
       # - Change the version in the POM from x-SNAPSHOT to the new version provided for the release_version_number input
@@ -107,5 +86,4 @@ jobs:
       - name: push development snapshot version
         id: push
         run: |
-          git push
-          
+          git push -f
