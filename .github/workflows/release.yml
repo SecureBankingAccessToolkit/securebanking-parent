@@ -3,7 +3,7 @@ run-name: Create release '${{ inputs.release_version_number }}'
 # What it does:
 # - Call release-prepare workflow
 # - Call release-publish-java workflow
-# - Call release-publish-draft-and-pr
+# - Call release-publish-release
 on:
   workflow_dispatch:
     inputs:
@@ -19,7 +19,7 @@ on:
 
 jobs:
 
-  release_prepare: # prepare for a release in scm, creates the tag and release branch with the proper release versions
+  release_prepare: # prepare for a release in scm, creates the tag with the proper release versions
     name: Call release prepare
     uses: ./.github/workflows/release-prepare.yml
     with:
@@ -41,12 +41,11 @@ jobs:
       FR_ARTIFACTORY_USER: ${{ secrets.FR_ARTIFACTORY_USER }}
       FR_ARTIFACTORY_USER_ENCRYPTED_PASSWORD: ${{ secrets.FR_ARTIFACTORY_USER_ENCRYPTED_PASSWORD }}
 
-  release_draft_and_pr:
-    name: Call publish draft and PR
+  release_create:
+    name: Call Publish Release
     needs: [release_prepare, release_java]
-    uses: ./.github/workflows/release-publish-draft-and-pr.yml
+    uses: ./.github/workflows/release-publish.yml
     with:
       release_version_number: ${{ inputs.release_version_number }}
-      release_branch_ref: ${{ needs.release_prepare.outputs.release_branch_ref }}
       release_tag_ref: ${{ needs.release_prepare.outputs.release_tag_ref }}
       release_notes: ${{ inputs.notes }}
