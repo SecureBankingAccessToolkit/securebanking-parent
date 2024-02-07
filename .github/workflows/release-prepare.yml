@@ -83,7 +83,7 @@ jobs:
       - name: release prepare
         id: maven_release
         run: |
-          mvn -B release:clean release:prepare -DreleaseVersion=${{ inputs.release_version_number }}
+          mvn -B release:clean release:prepare -DreleaseVersion=${{ inputs.release_version_number }} -DpushChanges=false
 
       # pushing changes done by the release prepare step (development snapshot version)
       - name: push development snapshot version
