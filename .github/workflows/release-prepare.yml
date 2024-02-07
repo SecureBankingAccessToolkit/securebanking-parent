@@ -23,12 +23,12 @@ on:
         required: true
       GIT_COMMIT_AUTHOR_EMAIL_BOT:
         required: true
-env:
+#env:
   # Set the environment with secrets provided by the caller (secrets section)
-  GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
-  GIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
-  GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
-  GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
+  #GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
+  #GIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
+  #GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
+  #GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
 
 jobs:
   release_prepare:
@@ -55,13 +55,13 @@ jobs:
       # https://github.com/crazy-max/ghaction-import-gpg
       # https://httgp.com/signing-commits-in-github-actions/
       # Prepare the environment to sign the commits
-      - name: Import GPG Key
-        uses: crazy-max/ghaction-import-gpg@v5
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY_BOT }}
-          passphrase: ${{ secrets.GPG_KEY_PASSPHRASE_BOT }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
+#      - name: Import GPG Key
+#        uses: crazy-max/ghaction-import-gpg@v5
+#        with:
+#          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY_BOT }}
+#          passphrase: ${{ secrets.GPG_KEY_PASSPHRASE_BOT }}
+#          git_user_signingkey: true
+#          git_commit_gpgsign: true
 
       # Create tag context variable
       - name: Create Release Context
