@@ -23,7 +23,6 @@ on:
         required: true
       GIT_COMMIT_AUTHOR_EMAIL_BOT:
         required: true
-
 env:
   # Set the environment with secrets provided by the caller (secrets section)
   GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
