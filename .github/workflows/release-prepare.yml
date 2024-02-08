@@ -92,6 +92,7 @@ jobs:
         id: push
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git config --list
           git push origin ${{ steps.create_release_context.outputs.release_tag }}
           git push -f
           exit 1
