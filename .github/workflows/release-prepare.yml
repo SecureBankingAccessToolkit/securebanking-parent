@@ -21,9 +21,22 @@ on:
         description: "Release tag"
         value: ${{ jobs.release_prepare.outputs.release_tag_ref }}
     secrets:
+      GPG_PRIVATE_KEY_BOT:
+        required: true
+      GPG_KEY_PASSPHRASE_BOT:
+        required: true
+      GIT_COMMIT_USERNAME_BOT:
+        required: true
+      GIT_COMMIT_AUTHOR_EMAIL_BOT:
+        required: true
       release_github_token:
         required: true
-
+env:
+  # Set the environment with secrets provided by the caller (secrets section)
+  GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
+  GIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
+  GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
+  GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
 
 jobs:
   release_prepare:
