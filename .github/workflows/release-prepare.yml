@@ -31,7 +31,6 @@ env:
   GIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
   GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
   GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
-  GITHUB_TOKEN: ${{ secrets.release_github_token }}
 
 jobs:
   release_prepare:
@@ -43,8 +42,10 @@ jobs:
 
     steps:
       # https://github.com/actions/checkout
-      - name: Checkout Parent Repo
+      - name: Checkout Repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.release_github_token }}
 
       # set java and cache
       - name: Set Java and Maven Cache
@@ -55,9 +56,6 @@ jobs:
           architecture: x64
           cache: 'maven'
 
-      # https://github.com/crazy-max/ghaction-import-gpg
-      # https://httgp.com/signing-commits-in-github-actions/
-      # Prepare the environment to sign the commits
       - name: Import GPG Key
         uses: crazy-max/ghaction-import-gpg@v5
         with:
@@ -75,18 +73,8 @@ jobs:
       # Release prepare
       # - Change the version in the POM from x-SNAPSHOT to the new version provided for the release_version_number input
       # - Transform the SCM information in the POM to include the final destination of the tag
-      # - Commit the modified POM
-      # - Tag the code in the SCM with a version name (v${{ inputs.release_version_number }})
-      # See in the pom file the configuration '<tagNameFormat>v@{project.version}</tagNameFormat>'
       # - Bump the version in the POM to a new value, the next development iteration (y-SNAPSHOT)
-      # - Commit the modified POM
-      - name: release prepare
-        id: maven_release
+      - name: Release
         run: |
-          mvn -B release:clean release:prepare -DreleaseVersion=${{ inputs.release_version_number }} -DpushChanges=false
+          mvn -B release:clean release:prepare -DreleaseVersion=${{ inputs.release_version_number }}
 
-      # pushing changes done by the release prepare step (development snapshot version)
-      - name: push development snapshot version
-        id: push
-        run: |
-          git push -f
