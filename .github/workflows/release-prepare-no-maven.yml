@@ -35,8 +35,10 @@ jobs:
 
     steps:
       # https://github.com/actions/checkout
-      - name: Checkout Parent Repo
+      - name: Checkout Repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.release_github_token }}
 
       # Create tag context variable
       - name: Create Release Context
