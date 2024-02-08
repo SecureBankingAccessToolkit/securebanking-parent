@@ -62,23 +62,31 @@ jobs:
           architecture: x64
           cache: 'maven'
 
+      - name: Import GPG Key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY_BOT }}
+          passphrase: ${{ secrets.GPG_KEY_PASSPHRASE_BOT }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
       # Create tag context variable
       - name: Create Release Context
         id: create_release_context
         run: |
           echo "release_tag=v${{ inputs.release_version_number }}" >> $GITHUB_OUTPUT
-          git config --global user.name ${{ inputs.github_release_user }}
-          git config --global user.email ${{ inputs.github_release_email }}
+#          git config --global user.name ${{ inputs.github_release_user }}
+#          git config --global user.email ${{ inputs.github_release_email }}
 
       # Release prepare
       # - Change the version in the POM from x-SNAPSHOT to the new version provided for the release_version_number input
       # - Transform the SCM information in the POM to include the final destination of the tag
       # - Bump the version in the POM to a new value, the next development iteration (y-SNAPSHOT)
-      - name: Releases
+      - name: Release
         run: |
-          mvn -B release:clean release:prepare -DreleaseVersion=${{ inputs.release_version_number }} -DpushChanges=false
+          mvn -B release:clean release:prepare -DreleaseVersion=${{ inputs.release_version_number }}
 
-      - name: Create Tag and Push Changes for Next Release
-        run: |
-          git push origin ${{ steps.create_release_context.outputs.release_tag }}
-          git push -f
+#      - name: Create Tag and Push Changes for Next Release
+#        run: |
+#          git push origin ${{ steps.create_release_context.outputs.release_tag }}
+#          git push -f
