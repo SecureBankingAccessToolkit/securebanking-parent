@@ -90,14 +90,10 @@ jobs:
           mvn -B release:clean release:prepare -DreleaseVersion=${{ inputs.release_version_number }}
 
       # create the release tag with release version number provided
+      # Push the tag to origin
       - name: Create Release Tag
         if: ${{ inputs.require_maven == 'false' }}
         run: |
           echo "Creating Release Tag: ${{ steps.create_release_context.outputs.release_tag }}"
           git tag -a ${{ steps.create_release_context.outputs.release_tag }} -m "Tag for release ${{ inputs.release_version_number }}"
-
-      # push tag to remote repository
-      - name: Push Tag
-        if: ${{ inputs.require_maven == 'false' }}
-        run: |
           git push origin ${{ steps.create_release_context.outputs.release_tag }}
