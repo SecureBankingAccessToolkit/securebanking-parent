@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - ob-v*
 jobs:
   run_merge-template:
     name: Merge - Build and Deploy
