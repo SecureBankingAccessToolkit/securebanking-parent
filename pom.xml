@@ -21,7 +21,7 @@
 
     <groupId>com.forgerock.sapi.gateway</groupId>
     <artifactId>secure-api-gateway-parent</artifactId>
-    <version>4.0.1-SNAPSHOT</version>
+    <version>4.0.4-SNAPSHOT</version>
     <name>securebanking-parent</name>
     <packaging>pom</packaging>
     <description>A parent pom to be used by all ForgeRock Secure Api Gateway projects</description>
